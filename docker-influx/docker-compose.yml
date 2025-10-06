@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - /var/lib/influxdb:/var/lib/influxdb2
