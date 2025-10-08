@@ -8,9 +8,18 @@ services:
       - "8086:8086"
     volumes:
       - /var/lib/influxdb:/var/lib/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUX_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUX_BUCKET}
   
   python-app:
     build: .
     container_name: python_app
     depends_on:
       - influxdb
+    environment:
+      INFLUX_URL: ${INFLUX_URL}
+      INFLUX_TOKEN: ${INFLUX_TOKEN}
+      INFLUX_ORG: ${INFLUX_ORG}
+      INFLUX_BUCKET: ${INFLUX_BUCKET}

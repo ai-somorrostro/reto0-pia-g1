@@ -1,12 +1,13 @@
 import pandas as pd
 import requests
 import time
+import os
 from datetime import datetime
 
-INFLUX_URL = "http://influxdb:8086"
-TOKEN = "AKkf_NEMPLvx4fiBFG_kI4GTnk-SpmC8JmCECLnG6Ano7xXYeropcO08gFsTBvelRPUNkQ-dS4G_TryVV42qKA=="
-ORG = "somorrostro"
-BUCKET = "RETO0-Pandas"
+INFLUX_URL = os.environ.get("INFLUX_URL")
+TOKEN = os.environ.get("INFLUX_TOKEN")
+ORG = os.environ.get("INFLUX_ORG")
+BUCKET = os.environ.get("INFLUX_BUCKET")
 
 # Esperamos a que InfluxDB esté listo
 print(f"[{datetime.now()}] ⏳ Esperando a que InfluxDB esté disponible...")
