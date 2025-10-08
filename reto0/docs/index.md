@@ -1,17 +1,11 @@
-# Welcome to MkDocs
-
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
-
-## Commands
-
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+# Documentacion Reto 0
 
 ## Project layout
 
     mkdocs.yml    # The configuration file.
     docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+        BDA.md  # Documentacion de Big Data Aplicado
+        MIA.md  # Documentacion de Modelos de Inteligencia Artificial
+        PIA.md  # Documentacion de Programas de Inteligencia Artificial
+        SAA.md  # Documentacion de Sistemas de Aprendizaje Automatico
+        SBD.md  # Documentacion de Sistemas de Big Data
