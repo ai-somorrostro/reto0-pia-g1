@@ -7,7 +7,7 @@ services:
     ports:
       - "8086:8086"
     volumes:
-      - /var/lib/influxdb:/var/lib/influxdb2
+      - influxdb_data:/data
     environment:
       - DOCKER_INFLUXDB_INIT_MODE=setup
       - DOCKER_INFLUXDB_INIT_ORG=${INFLUX_ORG}
@@ -22,4 +22,29 @@ services:
       INFLUX_URL: ${INFLUX_URL}
       INFLUX_TOKEN: ${INFLUX_TOKEN}
       INFLUX_ORG: ${INFLUX_ORG}
-      INFLUX_BUCKET: ${INFLUX_BUCKET}
+      INFLUX_BUCKET: ${INFLUX_BUCKET} 
+
+  grafana:
+    image: grafana/grafana:10.3.0
+    container_name: grafana_server
+    depends_on:
+      - influxdb
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/data
+  
+  nodered:
+    image: nodered/node-red:3.1.1
+    container_name: node_red
+    depends_on:
+      - influxdb
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered_data:/data
+
+volumes:
+  influxdb_data:
+  grafana_data:
+  nodered_data:
