@@ -17,3 +17,6 @@ Hemos explicado los usos que podrian tener este tipo de modelos en otras areas d
 
 ## Limitaciones o desafios
 Hemos explicado los riesgos, dificultades y limitaciones que podriamos llegarnos a encontrar al usar el modelo de inteligencia artifical escogido
+
+## Viabilidad
+Hemos discutido la viabilidad potencial del proyecto teniendo en cuenta las ventajas y desventajas que tendrian que valorar la empresa
