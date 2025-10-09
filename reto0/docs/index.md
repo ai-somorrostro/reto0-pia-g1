@@ -1,9 +1,7 @@
 # Documentacion Reto 0
 
-## Project layout
+## Indice
 
-    mkdocs.yml    # The configuration file.
-    docs/
         BDA.md  # Documentacion de Big Data Aplicado
         MIA.md  # Documentacion de Modelos de Inteligencia Artificial
         PIA.md  # Documentacion de Programas de Inteligencia Artificial
