@@ -1,8 +1,10 @@
-# Dockerfile
-FROM influxdb:2.7
+FROM python:3.12-slim
 
-# Exponemos el puerto
-EXPOSE 8086
+WORKDIR /app
 
-# Arranca InfluxDB
-CMD ["influxd"]
+COPY app.py .
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
+
+CMD ["sh", "-c", "while true; do python app.py; sleep 180; done"]

@@ -1,0 +1,17 @@
+site_name: Documentacion
+site_author: Grupo 1
+site_url: https://haimar.alvarez.github.io
+
+theme:
+  name: null
+  custom_dir: .venv/lib/python3.12/site-packages/mkdocs_bootstrap386
+
+
+nav:
+  - MIA: MIA.md
+  - BDA: BDA.md
+  - PIA: PIA.md
+  - SAA: SAA.md
+  - SBD: SBD.md
+
+repo_url: https://github.com/haimar.alvarez/haimar.alvarez.github.io
