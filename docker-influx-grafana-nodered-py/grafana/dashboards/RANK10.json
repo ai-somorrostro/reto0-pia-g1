@@ -1,0 +1,510 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 12,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb_reto0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Binance Coin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "BInance"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Dogecoin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Dogecoin"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Ethereum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Ethereum"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Solana"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Solana"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Staked Ether"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Ether"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc TON Station"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "TON Station"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Tether"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Tether"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc USD Coin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "USD Coin"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc XRP"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "XRP"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "query": "from(bucket: \"RETO0-NodeRed\")\n\t|> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"RANK10\")\n  |> filter(fn: (r) => r[\"_field\"] == \"price_btc\")\n  |> filter(fn: (r) => r[\"tag1\"] == \"Binance Coin\" or r[\"tag1\"] == \"Dogecoin\" or r[\"tag1\"] == \"Ethereum\" or r[\"tag1\"] == \"Solana\" or r[\"tag1\"] == \"Staked Ether\" or r[\"tag1\"] == \"TON Station\" or r[\"tag1\"] == \"Tether\" or r[\"tag1\"] == \"USD Coin\" or r[\"tag1\"] == \"XRP\")",
+          "refId": "A"
+        }
+      ],
+      "title": "PRECIO EN BITCOIN",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb_reto0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "fieldMinMax": false,
+          "mappings": [],
+          "min": -1,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 1000
+              }
+            ]
+          },
+          "unit": "$"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio Bitcoin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio Bitcoin"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio Binance Coin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio Binance"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio Dogecoin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio Dogecoin"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio Ethereum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio Ethereum"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio Solana"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio Solana"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio Staked Ether"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio Staked"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio TON Station"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio TON"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio Tether"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio Tether"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio USD Coin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio USD Coin"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "precio XRP"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Precio XRP"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "background",
+        "graphMode": "none",
+        "justifyMode": "center",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "influxdb_reto0"
+          },
+          "query": "from(bucket: \"RETO0-NodeRed\")\n\t|> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"RANK10\")\n  |> filter(fn: (r) => r[\"_field\"] == \"precio\")\n  |> filter(fn: (r) => r[\"tag1\"] == \"Binance Coin\" or r[\"tag1\"] == \"Bitcoin\" or r[\"tag1\"] == \"Dogecoin\" or r[\"tag1\"] == \"Ethereum\" or r[\"tag1\"] == \"Solana\" or r[\"tag1\"] == \"Staked Ether\" or r[\"tag1\"] == \"TON Station\" or r[\"tag1\"] == \"Tether\" or r[\"tag1\"] == \"USD Coin\" or r[\"tag1\"] == \"XRP\")",
+          "refId": "A"
+        }
+      ],
+      "title": "RANK10 CRIPTO",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb_reto0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 20,
+            "gradientMode": "scheme",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 3,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "currencyUSD"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 14,
+        "x": 5,
+        "y": 11
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "hidden",
+          "placement": "right",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "query": "from(bucket: \"RETO0-NodeRed\")\n\t|> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"RANK10\")\n  |> filter(fn: (r) => r[\"_field\"] == \"precio\")\n  |> filter(fn: (r) => r[\"tag1\"] == \"Binance Coin\" or r[\"tag1\"] == \"Dogecoin\" or r[\"tag1\"] == \"Ethereum\" or r[\"tag1\"] == \"Solana\" or r[\"tag1\"] == \"Staked Ether\" or r[\"tag1\"] == \"TON Station\" or r[\"tag1\"] == \"Tether\" or r[\"tag1\"] == \"USD Coin\" or r[\"tag1\"] == \"XRP\")",
+          "refId": "A"
+        }
+      ],
+      "title": "MEDIA PRECIOS CRIPTOS (SIN BITCOIN)",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "mode": "reduceRow",
+            "reduce": {
+              "reducer": "mean"
+            },
+            "replaceFields": true
+          }
+        }
+      ],
+      "type": "timeseries"
+    }
+  ],
+  "preload": false,
+  "schemaVersion": 41,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "RANK10",
+  "uid": "8797d1c9-4082-4d6a-98dd-3d147f742ad6",
+  "version": 8
+}
