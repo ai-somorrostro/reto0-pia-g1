@@ -25,7 +25,7 @@ if __name__ == "__main__":
                            "percent_change_7d", "price_btc", "date", "id"]
 
         # Nombre fijo del archivo
-        nombre_archivo = "precio.csv"
+        nombre_archivo = "/data/precio.csv"
 
         # Timestamp para la columna "date"
         timestamp_fila = datetime.now().isoformat()

@@ -1,6 +1,6 @@
 FROM python:3.9-slim
 
 WORKDIR /app
-COPY app.py /app/app.py
+COPY app/app.py /app/app.py
 
-CMD ["python", "/app/app.py"]
+CMD ["sh", "-c", "while true; do python app.py; sleep 100; done"]
