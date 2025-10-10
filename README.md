@@ -6,6 +6,9 @@ En esta rama estan todos los archivos necesarios para poder ejecutar el contened
 ## Rama "pruebas-docker" 
 En esta rama estan todos los archivos necesarios para poder ejecutar el contenedor que cargara los datos de la api en un csv
 
+## Rama "docker-sql"
+En esta rama estan todos los archivos necesarios para poder ejecutar el contenedor que inicializara el sqlserver
+
 ## Rama "githubpage" 
 En esta rama estan todos los archivos necesarios para modificar la Githubpage 
 
