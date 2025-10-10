@@ -1,7 +1,7 @@
 # reto0-pia-g1
 
-## Rama "docker-influx"
-En esta rama estan todos los archivos necesarios para poder ejecutar el contenedor que inicializara influx, node red y grafana, 
+## Rama "docker-influx-grafana-nodered-py"
+En esta rama estan todos los archivos necesarios para poder ejecutar el contenedor que inicializara influx, node red, el archivo python de panda y grafana, 
 
 ## Rama "pruebas-docker" 
 En esta rama estan todos los archivos necesarios para poder ejecutar el contenedor que cargara los datos de la api en un csv
