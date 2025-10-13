@@ -20,10 +20,7 @@
         "influxdbVersion": "2.0",
         "url": "http://influxdb:8086",
         "timeout": "10",
-        "rejectUnauthorized": true,
-        "credentials": {
-            "token": "admintoken"
-        }
+        "rejectUnauthorized": true
     },
     {
         "id": "5d8af1287825e439",
