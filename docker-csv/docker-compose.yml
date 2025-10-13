@@ -1,7 +1,7 @@
 services:
   criptos:
     build: .
-    container_name: criptos_app
+    container_name: criptos_app_csv
     volumes:
       - ./data:/data
     restart: always
