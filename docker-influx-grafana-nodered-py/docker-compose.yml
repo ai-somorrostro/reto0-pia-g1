@@ -36,6 +36,7 @@ services:
       - nodered-data:/data
     environment:
       - TZ=Europe/Madrid
+      - INFLUXDB_TOKEN=${INFLUXDB_TOKEN}
     restart: unless-stopped
     networks:
       - iot-net
