@@ -29,44 +29,62 @@
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "continuous-GrYlRd"
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": 0
               },
               {
-                "color": "#EAB839",
-                "value": 50
-              },
-              {
                 "color": "red",
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "%"
         },
         "overrides": [
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc Binance Coin"
+              "options": "percent_change_7d Binance Coin"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "BInance"
+                "value": "Binance"
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc Dogecoin"
+              "options": "percent_change_7d Dogecoin"
             },
             "properties": [
               {
@@ -78,7 +96,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc Ethereum"
+              "options": "percent_change_7d Ethereum"
             },
             "properties": [
               {
@@ -90,7 +108,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc Solana"
+              "options": "percent_change_7d Solana"
             },
             "properties": [
               {
@@ -102,31 +120,19 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc Staked Ether"
+              "options": "percent_change_7d Staked Ether"
             },
             "properties": [
               {
                 "id": "displayName",
-                "value": "Ether"
+                "value": "Staked"
               }
             ]
           },
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc TON Station"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "TON Station"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "price_btc Tether"
+              "options": "percent_change_7d Tether"
             },
             "properties": [
               {
@@ -138,7 +144,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc USD Coin"
+              "options": "percent_change_7d USD Coin"
             },
             "properties": [
               {
@@ -150,7 +156,7 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "price_btc XRP"
+              "options": "percent_change_7d XRP"
             },
             "properties": [
               {
@@ -162,45 +168,43 @@
         ]
       },
       "gridPos": {
-        "h": 11,
-        "w": 12,
+        "h": 15,
+        "w": 16,
         "x": 0,
         "y": 0
       },
-      "id": 3,
+      "id": 4,
       "options": {
-        "displayMode": "lcd",
+        "barRadius": 0,
+        "barWidth": 0.97,
+        "fullHighlight": false,
+        "groupWidth": 0.7,
         "legend": {
           "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
-          "showLegend": false
+          "showLegend": true
         },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "auto",
         "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "showValue": "auto",
+        "stacking": "normal",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
         },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "valueMode": "color"
+        "xTickLabelRotation": 0,
+        "xTickLabelSpacing": 100
       },
       "pluginVersion": "12.1.1",
       "targets": [
         {
-          "query": "from(bucket: \"RETO0-NodeRed\")\n\t|> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"RANK10\")\n  |> filter(fn: (r) => r[\"_field\"] == \"price_btc\")\n  |> filter(fn: (r) => r[\"tag1\"] == \"Binance Coin\" or r[\"tag1\"] == \"Dogecoin\" or r[\"tag1\"] == \"Ethereum\" or r[\"tag1\"] == \"Solana\" or r[\"tag1\"] == \"Staked Ether\" or r[\"tag1\"] == \"TON Station\" or r[\"tag1\"] == \"Tether\" or r[\"tag1\"] == \"USD Coin\" or r[\"tag1\"] == \"XRP\")",
+          "query": "from(bucket: \"RETO0-NodeRed\")\n\t|> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"RANK10\")\n  |> filter(fn: (r) => r[\"_field\"] == \"percent_change_7d\")\n  |> filter(fn: (r) => r[\"tag1\"] == \"Binance Coin\" or r[\"tag1\"] == \"Dogecoin\" or r[\"tag1\"] == \"Ethereum\" or r[\"tag1\"] == \"Solana\" or r[\"tag1\"] == \"Staked Ether\" or r[\"tag1\"] == \"TON Station\" or r[\"tag1\"] == \"Tether\" or r[\"tag1\"] == \"USD Coin\" or r[\"tag1\"] == \"XRP\")",
           "refId": "A"
         }
       ],
-      "title": "PRECIO EN BITCOIN",
-      "type": "bargauge"
+      "title": "PORCENTAJE CAMBIO 7 DIAS",
+      "type": "barchart"
     },
     {
       "datasource": {
@@ -351,9 +355,9 @@
         ]
       },
       "gridPos": {
-        "h": 11,
-        "w": 12,
-        "x": 12,
+        "h": 15,
+        "w": 8,
+        "x": 16,
         "y": 0
       },
       "id": 1,
@@ -387,6 +391,187 @@
       ],
       "title": "RANK10 CRIPTO",
       "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "influxdb",
+        "uid": "influxdb_reto0"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "percentage",
+            "steps": [
+              {
+                "color": "green",
+                "value": 0
+              },
+              {
+                "color": "#EAB839",
+                "value": 50
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Binance Coin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "BInance"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Dogecoin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Dogecoin"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Ethereum"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Ethereum"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Solana"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Solana"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Staked Ether"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Ether"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc TON Station"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "TON Station"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc Tether"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Tether"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc USD Coin"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "USD Coin"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "price_btc XRP"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "XRP"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 15,
+        "w": 9,
+        "x": 0,
+        "y": 15
+      },
+      "id": 3,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "12.1.1",
+      "targets": [
+        {
+          "query": "from(bucket: \"RETO0-NodeRed\")\n\t|> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"RANK10\")\n  |> filter(fn: (r) => r[\"_field\"] == \"price_btc\")\n  |> filter(fn: (r) => r[\"tag1\"] == \"Binance Coin\" or r[\"tag1\"] == \"Dogecoin\" or r[\"tag1\"] == \"Ethereum\" or r[\"tag1\"] == \"Solana\" or r[\"tag1\"] == \"Staked Ether\" or r[\"tag1\"] == \"TON Station\" or r[\"tag1\"] == \"Tether\" or r[\"tag1\"] == \"USD Coin\" or r[\"tag1\"] == \"XRP\")",
+          "refId": "A"
+        }
+      ],
+      "title": "PRECIO EN BITCOIN",
+      "type": "bargauge"
     },
     {
       "datasource": {
@@ -450,10 +635,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 11,
-        "w": 14,
-        "x": 5,
-        "y": 11
+        "h": 15,
+        "w": 15,
+        "x": 9,
+        "y": 15
       },
       "id": 2,
       "options": {
@@ -506,5 +691,5 @@
   "timezone": "browser",
   "title": "RANK10",
   "uid": "8797d1c9-4082-4d6a-98dd-3d147f742ad6",
-  "version": 8
+  "version": 14
 }
