@@ -44,10 +44,6 @@ df_coins = df[['symbol','name','price_usd','rank','percent_change_24h','percent_
 
 df_coins = df_coins[(df_coins['symbol'] == 'BTC') | (df_coins['symbol'] == 'ETH') | (df_coins['symbol'] == 'BNB') | (df_coins['symbol'] == 'XRP') | (df_coins['symbol'] == 'USDT') | (df_coins['symbol'] == 'SOL') | (df_coins['symbol'] == 'USDC') | (df_coins['symbol'] == 'SOON') | (df_coins['symbol'] == 'STETH')]
 
-# Formateamos datos
-for col in ['price_usd','percent_change_24h']:
-    df_coins[col] = pd.to_numeric(df_coins[col], errors='coerce')
-
 # Establecemos date y lo ponemos como indice
 df_coins['date'] = pd.to_datetime(datetime.now())
 
