@@ -58,17 +58,30 @@ services:
       - iot-net
     
   grafana:
-    image: grafana/grafana:10.3.0
+    build:
+      context: .
+      dockerfile: grafana/Dockerfile
     container_name: grafana_server
+    ports:
+      - "3000:3000" 
+    environment:
+      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      - INFLUX_URL=${INFLUX_URL}
+      - INFLUX_ORG=${INFLUX_ORG}
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+    restart: unless-stopped
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    networks:
+      - iot-net
     depends_on:
       influxdb:
         condition: service_healthy
-    ports:
-      - "3000:3000"
-    volumes:
-      - grafana-data:/data
-    networks:
-      - iot-net
 
 volumes:
   influxdb-data:

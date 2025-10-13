@@ -13,4 +13,4 @@ RUN apt-get update && apt-get install -y \
     pip install --no-cache-dir -r requirements.txt && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-CMD ["sh", "-c", "while true; do python app.py; sleep 100; done"]
+CMD ["sh", "-c", "while true; do python app.py; sleep 180; done"]

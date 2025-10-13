@@ -8,6 +8,21 @@
         "env": []
     },
     {
+        "id": "1c5133f170702cb3",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "influxdb - Reto0",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
         "id": "5d8af1287825e439",
         "type": "inject",
         "z": "fca3a7f5876902b9",
@@ -450,28 +465,5 @@
                 "b07b035c4ab73e85"
             ]
         ]
-    },
-    {
-        "id": "1c5133f170702cb3",
-        "type": "influxdb",
-        "hostname": "127.0.0.1",
-        "port": 8086,
-        "protocol": "http",
-        "database": "database",
-        "name": "influxdb - Reto0",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://influxdb:8086",
-        "timeout": 10,
-        "rejectUnauthorized": true
-    },
-    {
-        "id": "1bf9c1709eba8071",
-        "type": "global-config",
-        "env": [],
-        "modules": {
-            "node-red-contrib-influxdb": "0.7.0"
-        }
     }
 ]

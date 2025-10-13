@@ -1,0 +1,16 @@
+apiVersion: 1
+
+datasources:
+  - name: InfluxDB
+    type: influxdb
+    access: proxy
+    uid: influxdb_reto0
+    url: ${INFLUX_URL}
+    jsonData:
+      version: Flux
+      organization: ${INFLUX_ORG}
+      tlsSkipVerify: true
+    secureJsonData:
+      token: ${INFLUXDB_TOKEN}
+    editable: true
+    isDefault: true
