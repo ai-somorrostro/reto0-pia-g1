@@ -1,25 +1,29 @@
 import pandas as pd
 import requests
-import time
 import os
 from datetime import datetime
+from influxdb_client import InfluxDBClient, Point, WriteOptions, BucketsApi
+from influxdb_client.client.exceptions import InfluxDBError
 
 INFLUX_URL = os.environ.get("INFLUX_URL")
 TOKEN = os.environ.get("INFLUX_TOKEN")
 ORG = os.environ.get("INFLUX_ORG")
-BUCKET = os.environ.get("INFLUX_BUCKET")
+BUCKET = os.environ.get("INFLUX_BUCKET_PANDAS")
 
-# Esperamos a que InfluxDB esté listo
-print(f"[{datetime.now()}] ⏳ Esperando a que InfluxDB esté disponible...")
-while True:
+# Creamos el bucket de pandas en influx
+with InfluxDBClient(url=INFLUX_URL, token=TOKEN, org=ORG) as client:
+    # Creamos el bucket si no existe
+    buckets_api = BucketsApi(client)
     try:
-        r = requests.get(f"{INFLUX_URL}/health")
-        if r.status_code == 200:
-            print(f"[{datetime.now()}] ✅ InfluxDB listo")
-            break
-    except requests.exceptions.RequestException:
-        pass
-    time.sleep(2)
+        bucket_list = buckets_api.find_buckets().buckets
+        if not any(b.name == BUCKET for b in bucket_list):
+            print(f"[{datetime.now()}] ⚡ Bucket '{BUCKET}' no existe, creando...")
+            buckets_api.create_bucket(bucket_name=BUCKET, org=ORG)
+        else:
+            print(f"[{datetime.now()}] ✅ Bucket '{BUCKET}' ya existe")
+    except InfluxDBError as e:
+        print(f"[{datetime.now()}] ❌ Error al listar o crear bucket: {e}")
+        raise
 
 # Cogemos los datos de la API y los pasamos a JSON
 
@@ -40,18 +44,12 @@ df_coins = df[['symbol','name','price_usd','rank','percent_change_24h','percent_
 
 df_coins = df_coins[(df_coins['symbol'] == 'BTC') | (df_coins['symbol'] == 'ETH') | (df_coins['symbol'] == 'BNB') | (df_coins['symbol'] == 'XRP') | (df_coins['symbol'] == 'USDT') | (df_coins['symbol'] == 'SOL') | (df_coins['symbol'] == 'USDC') | (df_coins['symbol'] == 'SOON') | (df_coins['symbol'] == 'STETH')]
 
-# Formateamos datos
-for col in ['price_usd','percent_change_24h']:
-    df_coins[col] = pd.to_numeric(df_coins[col], errors='coerce')
-
 # Establecemos date y lo ponemos como indice
 df_coins['date'] = pd.to_datetime(datetime.now())
 
 df_coins = df_coins.set_index('date')
 
 # Subimos los datos a Influx
-from influxdb_client import InfluxDBClient, Point, WriteOptions
-
 try:
     with InfluxDBClient(url=INFLUX_URL, token=TOKEN, org=ORG) as client:
         write_api = client.write_api(write_options=WriteOptions(batch_size=1))

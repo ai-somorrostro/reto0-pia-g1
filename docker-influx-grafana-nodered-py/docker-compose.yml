@@ -1,0 +1,94 @@
+version: '3.8'
+
+services:
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+      - influxdb-config:/etc/influxdb2
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=${INFLUX_USER}
+      - DOCKER_INFLUXDB_INIT_PASSWORD=${INFLUX_PASSWORD}
+      - DOCKER_INFLUXDB_INIT_ORG=${INFLUX_ORG}
+      - DOCKER_INFLUXDB_INIT_BUCKET=${INFLUX_BUCKET}
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=${INFLUX_TOKEN}
+    restart: unless-stopped
+    networks:
+      - iot-net
+    healthcheck:
+      test: ["CMD", "influx", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+  
+  nodered:
+    build:
+      context: .
+      dockerfile: nodered/Dockerfile
+    container_name: nodered
+    ports:
+      - "1880:1880"
+    volumes:
+      - nodered-data:/data
+    environment:
+      - TZ=Europe/Madrid
+    restart: unless-stopped
+    networks:
+      - iot-net
+    depends_on:
+      influxdb:
+        condition: service_healthy
+        
+  python-app:
+    build: .
+    container_name: python_app
+    depends_on:
+        influxdb:
+          condition: service_healthy
+    environment:
+      - INFLUX_URL=${INFLUX_URL}
+      - INFLUX_TOKEN=${INFLUX_TOKEN}
+      - INFLUX_ORG=${INFLUX_ORG}
+      - INFLUX_BUCKET_PANDAS=${INFLUX_BUCKET_PANDAS}
+    networks:
+      - iot-net
+    
+  grafana:
+    build:
+      context: .
+      dockerfile: grafana/Dockerfile
+    container_name: grafana_server
+    ports:
+      - "3000:3000" 
+    environment:
+      - INFLUXDB_TOKEN=${INFLUX_TOKEN}
+      - INFLUX_URL=${INFLUX_URL}
+      - INFLUX_ORG=${INFLUX_ORG}
+      - GF_SECURITY_ADMIN_USER=${GRAFANA_USER}
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD}
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
+      - GF_SERVER_ROOT_URL=http://localhost:3000
+    restart: unless-stopped
+    volumes:
+      - grafana-data:/var/lib/grafana
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    networks:
+      - iot-net
+    depends_on:
+      influxdb:
+        condition: service_healthy
+
+volumes:
+  influxdb-data:
+  influxdb-config:
+  nodered-data:
+  grafana-data:
+
+networks:
+  iot-net:
+    driver: bridge

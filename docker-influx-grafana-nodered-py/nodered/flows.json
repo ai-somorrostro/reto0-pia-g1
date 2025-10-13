@@ -1,0 +1,469 @@
+[
+    {
+        "id": "fca3a7f5876902b9",
+        "type": "tab",
+        "label": "RETO-0",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1c5133f170702cb3",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "database",
+        "name": "influxdb - Reto0",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://influxdb:8086",
+        "timeout": "10",
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "5d8af1287825e439",
+        "type": "inject",
+        "z": "fca3a7f5876902b9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "180",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "2d342be435834fd0"
+            ]
+        ]
+    },
+    {
+        "id": "47ab879a54f44f16",
+        "type": "function",
+        "z": "fca3a7f5876902b9",
+        "name": "BITCOIN",
+        "func": "var data = msg.payload.data;\n\n// Buscamos el objeto cuyo símbolo sea 'BTC'\nlet dataCOIN = data.find(coin => coin.symbol === 'BTC');\n\nif (dataCOIN) {\n    //Obtenemos nombre para el tag\n    let nombre = dataCOIN.name;\n    // Obtenemos el precio en USD si encontramos el objeto\n    let precio = dataCOIN ? parseFloat(dataCOIN.price_usd) : null;\n    //Obtenemos el ranking\n    let rank = dataCOIN ? parseInt(dataCOIN.rank) : null;\n    //Obtenemor porcentajes de cambio\n    let percent24 = dataCOIN ? parseFloat(dataCOIN.percent_change_24h) : null;\n    let percent7 = dataCOIN ? parseFloat(dataCOIN.percent_change_7d) : null;\n    //Obtenemos el precio den bitcoin\n    let precio_btc = dataCOIN ? parseFloat(dataCOIN.price_btc) : null;\n\n    msg.payload = [{\n        \"precio\": precio,\n        \"rank\":rank,\n        \"percent_change_24h\": percent24,\n        \"percent_change_7d\": percent7,\n        \"price_btc\": precio_btc\n    },\n    {\n        tag1: nombre\n    }];\n\n} else {\n    msg.payload = null; // si no encuentra la moneda\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 60,
+        "wires": [
+            [
+                "b48e1ebee72ba869",
+                "5f427f1662dc3b41"
+            ]
+        ]
+    },
+    {
+        "id": "2d342be435834fd0",
+        "type": "http request",
+        "z": "fca3a7f5876902b9",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.coinlore.net/api/tickers",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "71fb1920eb5cb39a",
+                "47ab879a54f44f16",
+                "15ad86a66d4b189c",
+                "bc508f3a2b6eabc9"
+            ]
+        ]
+    },
+    {
+        "id": "b48e1ebee72ba869",
+        "type": "debug",
+        "z": "fca3a7f5876902b9",
+        "name": "debug Bitcoin",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "5f427f1662dc3b41",
+        "type": "influxdb out",
+        "z": "fca3a7f5876902b9",
+        "influxdb": "1c5133f170702cb3",
+        "name": "influxdb - Reto0",
+        "measurement": "Criptomonedas",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "somorrostro",
+        "bucket": "RETO0-NodeRed",
+        "x": 1240,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "71fb1920eb5cb39a",
+        "type": "function",
+        "z": "fca3a7f5876902b9",
+        "name": "ETHEREUM",
+        "func": "var data = msg.payload.data;\n\n// Buscamos el objeto cuyo símbolo sea 'BTC'\nlet dataCOIN = data.find(coin => coin.symbol === 'ETH');\n\nif (dataCOIN) {\n    //Obtenemos nombre para el tag\n    let nombre = dataCOIN.name;\n    // Obtenemos el precio en USD si encontramos el objeto\n    let precio = dataCOIN ? parseFloat(dataCOIN.price_usd) : null;\n    //Obtenemos el ranking\n    let rank = dataCOIN ? parseInt(dataCOIN.rank) : null;\n    //Obtenemor porcentajes de cambio\n    let percent24 = dataCOIN ? parseFloat(dataCOIN.percent_change_24h) : null;\n    let percent7 = dataCOIN ? parseFloat(dataCOIN.percent_change_7d) : null;\n    //Obtenemos el precio den bitcoin\n    let precio_btc = dataCOIN ? parseFloat(dataCOIN.price_btc) : null;\n\n    msg.payload = [{\n        \"precio\": precio,\n        \"rank\": rank,\n        \"percent_change_24h\": percent24,\n        \"percent_change_7d\": percent7,\n        \"price_btc\": precio_btc\n    },\n    {\n        tag1: nombre\n    }];\n\n} else {\n    msg.payload = null; // si no encuentra la moneda\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 200,
+        "wires": [
+            [
+                "e6ee33958516c749",
+                "5f427f1662dc3b41"
+            ]
+        ]
+    },
+    {
+        "id": "e6ee33958516c749",
+        "type": "debug",
+        "z": "fca3a7f5876902b9",
+        "name": "debug Ethereum",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "15ad86a66d4b189c",
+        "type": "function",
+        "z": "fca3a7f5876902b9",
+        "name": "BINANCE",
+        "func": "var data = msg.payload.data;\n\n// Buscamos el objeto cuyo símbolo sea 'BTC'\nlet dataCOIN = data.find(coin => coin.symbol === 'BNB');\n\nif (dataCOIN) {\n    //Obtenemos nombre para el tag\n    let nombre = dataCOIN.name;\n    // Obtenemos el precio en USD si encontramos el objeto\n    let precio = dataCOIN ? parseFloat(dataCOIN.price_usd) : null;\n    //Obtenemos el ranking\n    let rank = dataCOIN ? parseInt(dataCOIN.rank) : null;\n    //Obtenemor porcentajes de cambio\n    let percent24 = dataCOIN ? parseFloat(dataCOIN.percent_change_24h) : null;\n    let percent7 = dataCOIN ? parseFloat(dataCOIN.percent_change_7d) : null;\n    //Obtenemos el precio den bitcoin\n    let precio_btc = dataCOIN ? parseFloat(dataCOIN.price_btc) : null;\n\n    msg.payload = [{\n        \"precio\": precio,\n        \"rank\": rank,\n        \"percent_change_24h\": percent24,\n        \"percent_change_7d\": percent7,\n        \"price_btc\": precio_btc\n    },\n    {\n        tag1: nombre\n    }];\n\n} else {\n    msg.payload = null; // si no encuentra la moneda\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 680,
+        "y": 320,
+        "wires": [
+            [
+                "56e3668d762f898b",
+                "5f427f1662dc3b41"
+            ]
+        ]
+    },
+    {
+        "id": "56e3668d762f898b",
+        "type": "debug",
+        "z": "fca3a7f5876902b9",
+        "name": "debug Binance",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "bc508f3a2b6eabc9",
+        "type": "function",
+        "z": "fca3a7f5876902b9",
+        "name": "DOGECOIN",
+        "func": "var data = msg.payload.data;\n\n// Buscamos el objeto cuyo símbolo sea 'BTC'\nlet dataCOIN = data.find(coin => coin.symbol === 'DOGE');\n\nif (dataCOIN) {\n    //Obtenemos nombre para el tag\n    let nombre = dataCOIN.name;\n    // Obtenemos el precio en USD si encontramos el objeto\n    let precio = dataCOIN ? parseFloat(dataCOIN.price_usd) : null;\n    //Obtenemos el ranking\n    let rank = dataCOIN ? parseInt(dataCOIN.rank) : null;\n    //Obtenemor porcentajes de cambio\n    let percent24 = dataCOIN ? parseFloat(dataCOIN.percent_change_24h) : null;\n    let percent7 = dataCOIN ? parseFloat(dataCOIN.percent_change_7d) : null;\n    //Obtenemos el precio den bitcoin\n    let precio_btc = dataCOIN ? parseFloat(dataCOIN.price_btc) : null;\n\n    msg.payload = [{\n        \"precio\": precio,\n        \"rank\": rank,\n        \"percent_change_24h\": percent24,\n        \"percent_change_7d\": percent7,\n        \"price_btc\": precio_btc\n    },\n    {\n        tag1: nombre\n    }];\n\n} else {\n    msg.payload = null; // si no encuentra la moneda\n}\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 690,
+        "y": 440,
+        "wires": [
+            [
+                "2c342e2ac9d2dc91",
+                "5f427f1662dc3b41"
+            ]
+        ]
+    },
+    {
+        "id": "2c342e2ac9d2dc91",
+        "type": "debug",
+        "z": "fca3a7f5876902b9",
+        "name": "debug Dogecoin",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 960,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "5566b6f20b71d2ac",
+        "type": "inject",
+        "z": "fca3a7f5876902b9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "180",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 195.00001525878906,
+        "y": 659.0000095367432,
+        "wires": [
+            [
+                "1d823e5a818a7bbd"
+            ]
+        ]
+    },
+    {
+        "id": "1d823e5a818a7bbd",
+        "type": "http request",
+        "z": "fca3a7f5876902b9",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.coinlore.net/api/tickers",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 435.00001525878906,
+        "y": 659.0000095367432,
+        "wires": [
+            [
+                "21e21da1bb2c39da"
+            ]
+        ]
+    },
+    {
+        "id": "21e21da1bb2c39da",
+        "type": "function",
+        "z": "fca3a7f5876902b9",
+        "name": "RANK10 CRIPTO",
+        "func": "var data = msg.payload.data;\n\n// Tomamos los primeros 10 elementos\nlet dataTop10 = data.slice(0, 10);\n\ndataTop10.forEach(coin => {\n    let msgCoin = {\n        payload: [{\n            \"precio\": parseFloat(coin.price_usd),\n            \"rank\": parseInt(coin.rank),\n            \"percent_change_24h\": parseFloat(coin.percent_change_24h),\n            \"percent_change_7d\": parseFloat(coin.percent_change_7d),\n            \"price_btc\": parseFloat(coin.percent_change_7d)\n        },\n        {\n            tag1: coin.name\n        }]\n    };\n    \n    node.send(msgCoin);  // envía un mensaje por cada moneda\n});\n\n// No devolver msg porque ya se ha enviado individualmente\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 715.0000152587891,
+        "y": 659.0000095367432,
+        "wires": [
+            [
+                "c27b532fcb94f3b3",
+                "1080c0a31d32cbb1"
+            ]
+        ]
+    },
+    {
+        "id": "c27b532fcb94f3b3",
+        "type": "debug",
+        "z": "fca3a7f5876902b9",
+        "name": "debug Rank10 Cripto",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1005.0000152587891,
+        "y": 619.0000095367432,
+        "wires": []
+    },
+    {
+        "id": "1080c0a31d32cbb1",
+        "type": "influxdb out",
+        "z": "fca3a7f5876902b9",
+        "influxdb": "1c5133f170702cb3",
+        "name": "influxdb - Reto0",
+        "measurement": "RANK10",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "somorrostro",
+        "bucket": "RETO0-NodeRed",
+        "x": 985.0000152587891,
+        "y": 699.0000095367432,
+        "wires": []
+    },
+    {
+        "id": "c661dd5420f2d6bb",
+        "type": "influxdb out",
+        "z": "fca3a7f5876902b9",
+        "influxdb": "1c5133f170702cb3",
+        "name": "influxdb - Reto0",
+        "measurement": "RANK11-20",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "somorrostro",
+        "bucket": "RETO0-NodeRed",
+        "x": 980,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "bff949f8429b92a9",
+        "type": "function",
+        "z": "fca3a7f5876902b9",
+        "name": "RANK11-20 CRIPTO",
+        "func": "var data = msg.payload.data;\n\n// Tomamos los primeros 10 elementos\nlet dataTop10 = data.slice(11, 20);\n\ndataTop10.forEach(coin => {\n    let msgCoin = {\n        payload: [{\n            \"precio\": parseFloat(coin.price_usd),\n            \"rank\": parseInt(coin.rank),\n            \"percent_change_24h\": parseFloat(coin.percent_change_24h),\n            \"percent_change_7d\": parseFloat(coin.percent_change_7d),\n            \"price_btc\": parseFloat(coin.percent_change_7d)\n        },\n        {\n            tag1: coin.name\n        }]\n    };\n    \n    node.send(msgCoin);  // envía un mensaje por cada moneda\n});\n\n// No devolver msg porque ya se ha enviado individualmente\nreturn null;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 720,
+        "y": 860,
+        "wires": [
+            [
+                "4f38f5d7b9457da3",
+                "c661dd5420f2d6bb"
+            ]
+        ]
+    },
+    {
+        "id": "b07b035c4ab73e85",
+        "type": "http request",
+        "z": "fca3a7f5876902b9",
+        "name": "",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api.coinlore.net/api/tickers",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 430,
+        "y": 860,
+        "wires": [
+            [
+                "bff949f8429b92a9"
+            ]
+        ]
+    },
+    {
+        "id": "4f38f5d7b9457da3",
+        "type": "debug",
+        "z": "fca3a7f5876902b9",
+        "name": "debug Rank10 Cripto",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1000,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "6a2a65969c4028fe",
+        "type": "inject",
+        "z": "fca3a7f5876902b9",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "180",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 860,
+        "wires": [
+            [
+                "b07b035c4ab73e85"
+            ]
+        ]
+    }
+]
