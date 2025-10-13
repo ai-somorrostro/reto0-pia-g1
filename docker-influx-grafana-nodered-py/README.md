@@ -20,6 +20,6 @@ docker compose up -d
 
 ## 4.- Finalmente en el navegador acceder a las siguientes direcciones para cada servicio
 
-**NodeRed**: http://localhost:1880
+**NodeRed**: http://localhost:1880  
 **InfluxDB**: http://localhost:8086  
 **Grafana**: http://localhost:3000  
