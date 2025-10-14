@@ -1,262 +1,93 @@
-2025-10-10 08:22:34.85 Server      Microsoft SQL Server 2022 (RTM-CU21) (KB5065865) - 16.0.4215.2 (X64) 
+2025-10-13 09:34:48.84 Server      Microsoft SQL Server 2022 (RTM-CU21) (KB5065865) - 16.0.4215.2 (X64) 
 	Aug 11 2025 13:24:21 
 	Copyright (C) 2022 Microsoft Corporation
 	Express Edition (64-bit) on Linux (Ubuntu 22.04.5 LTS) <X64>
-2025-10-10 08:22:34.85 Server      UTC adjustment: 0:00
-2025-10-10 08:22:34.85 Server      (c) Microsoft Corporation.
-2025-10-10 08:22:34.85 Server      All rights reserved.
-2025-10-10 08:22:34.85 Server      Server process ID is 380.
-2025-10-10 08:22:34.85 Server      Logging SQL Server messages in file '/var/opt/mssql/log/errorlog'.
-2025-10-10 08:22:34.86 Server      Registry startup parameters: 
+2025-10-13 09:34:48.85 Server      UTC adjustment: 0:00
+2025-10-13 09:34:48.85 Server      (c) Microsoft Corporation.
+2025-10-13 09:34:48.85 Server      All rights reserved.
+2025-10-13 09:34:48.85 Server      Server process ID is 388.
+2025-10-13 09:34:48.85 Server      Logging SQL Server messages in file '/var/opt/mssql/log/errorlog'.
+2025-10-13 09:34:48.86 Server      Registry startup parameters: 
 	 -d /var/opt/mssql/data/master.mdf
 	 -l /var/opt/mssql/data/mastlog.ldf
 	 -e /var/opt/mssql/log/errorlog
-2025-10-10 08:22:34.86 Server      SQL Server detected 1 sockets with 1 cores per socket and 1 logical processors per socket, 1 total logical processors; using 1 logical processors based on SQL Server licensing. This is an informational message; no user action is required.
-2025-10-10 08:22:34.86 Server      SQL Server is starting at normal priority base (=7). This is an informational message only. No user action is required.
-2025-10-10 08:22:34.87 Server      Detected 5912 MB of RAM, 4979 MB of available memory, 4979 MB of available page file. This is an informational message; no user action is required.
-2025-10-10 08:22:34.87 Server      Using conventional memory in the memory manager.
-2025-10-10 08:22:34.87 Server      Detected pause instruction latency: 21 cycles.
-2025-10-10 08:22:34.87 Server      SQL Server detected the following NUMA node configuration (NUMA Node number 0, Processor Group number 0, CPU Mask 0x0000000000000001).
-2025-10-10 08:22:34.87 Server      Page exclusion bitmap is enabled.
-2025-10-10 08:22:34.94 Server      Buffer pool extension is not supported on Linux platform.
-2025-10-10 08:22:34.98 Server      Buffer Pool: Allocating 8388608 bytes for 788067 hashPages.
-2025-10-10 08:22:35.18 Server      Buffer pool extension is already disabled. No action is necessary.
-2025-10-10 08:22:35.80 Server      Installing Client TLS certificates to the store.
-2025-10-10 08:22:35.83 Server      CPU vectorization level(s) detected:  SSE SSE2 SSE3 SSSE3 SSE41 SSE42 AVX AVX2 POPCNT BMI1 BMI2
-2025-10-10 08:22:36.01 Server      Successfully initialized the TLS configuration. Allowed TLS protocol versions are ['1.0 1.1 1.2']. Allowed TLS ciphers are ['ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:!DHE-RSA-AES256-GCM-SHA384:!DHE-RSA-AES128-GCM-SHA256:!DHE-RSA-AES256-SHA:!DHE-RSA-AES128-SHA'].
-2025-10-10 08:22:36.07 Server      Query Store settings initialized with enabled = 1, 
-2025-10-10 08:22:36.10 Server      The maximum number of dedicated administrator connections for this instance is '1'
-2025-10-10 08:22:36.11 Server      Node configuration: node 0: CPU mask: 0x0000000000000001:0 Active CPU mask: 0x0000000000000001:0. This message provides a description of the NUMA configuration for this computer. This is an informational message only. No user action is required.
-2025-10-10 08:22:36.25 Server      Using dynamic lock allocation.  Initial allocation of 2500 Lock blocks and 5000 Lock Owner blocks per node.  This is an informational message only.  No user action is required.
-2025-10-10 08:22:36.48 Server      CLR version v4.0.30319 loaded.
-2025-10-10 08:22:36.50 Server      In-Memory OLTP initialized on lowend machine.
-2025-10-10 08:22:36.62 Server      [INFO] Created Extended Events session 'hkenginexesession'
-2025-10-10 08:22:36.63 Server      Database Instant File Initialization: enabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.
-2025-10-10 08:22:36.72 Server      Total Log Writer threads: 1. This is an informational message; no user action is required.
-2025-10-10 08:22:36.75 Server      clflushopt is selected for pmem flush operation.
-2025-10-10 08:22:36.77 Server      Software Usage Metrics is disabled.
-2025-10-10 08:22:36.83 spid9s      [1]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
-2025-10-10 08:22:36.85 spid9s      Starting up database 'master'.
-2025-10-10 08:22:37.34 spid9s      Converting database 'master' from version 927 to the current version 957.
-2025-10-10 08:22:37.35 spid9s      Database 'master' running the upgrade step from version 927 to version 928.
-2025-10-10 08:22:37.44 spid9s      Database 'master' running the upgrade step from version 928 to version 929.
-2025-10-10 08:22:37.50 spid9s      Database 'master' running the upgrade step from version 929 to version 930.
-2025-10-10 08:22:37.55 spid9s      Database 'master' running the upgrade step from version 930 to version 931.
-2025-10-10 08:22:37.58 spid9s      Database 'master' running the upgrade step from version 931 to version 932.
-2025-10-10 08:22:37.59 spid9s      Database 'master' running the upgrade step from version 932 to version 933.
-2025-10-10 08:22:37.61 spid9s      Database 'master' running the upgrade step from version 933 to version 934.
-2025-10-10 08:22:37.65 spid9s      Database 'master' running the upgrade step from version 934 to version 935.
-2025-10-10 08:22:37.71 spid9s      Database 'master' running the upgrade step from version 935 to version 936.
-2025-10-10 08:22:37.73 spid9s      Database 'master' running the upgrade step from version 936 to version 937.
-2025-10-10 08:22:37.74 spid9s      Database 'master' running the upgrade step from version 937 to version 938.
-2025-10-10 08:22:37.75 spid9s      Database 'master' running the upgrade step from version 938 to version 939.
-2025-10-10 08:22:37.77 spid9s      Database 'master' running the upgrade step from version 939 to version 940.
-2025-10-10 08:22:37.78 spid9s      Database 'master' running the upgrade step from version 940 to version 941.
-2025-10-10 08:22:37.80 spid9s      Database 'master' running the upgrade step from version 941 to version 942.
-2025-10-10 08:22:37.82 spid9s      Database 'master' running the upgrade step from version 942 to version 943.
-2025-10-10 08:22:37.89 spid9s      Database 'master' running the upgrade step from version 943 to version 944.
-2025-10-10 08:22:37.91 spid9s      Database 'master' running the upgrade step from version 944 to version 945.
-2025-10-10 08:22:38.01 spid9s      Database 'master' running the upgrade step from version 945 to version 946.
-2025-10-10 08:22:38.04 spid9s      Database 'master' running the upgrade step from version 946 to version 947.
-2025-10-10 08:22:38.06 spid9s      Database 'master' running the upgrade step from version 947 to version 948.
-2025-10-10 08:22:38.08 spid9s      Database 'master' running the upgrade step from version 948 to version 949.
-2025-10-10 08:22:38.11 spid9s      Database 'master' running the upgrade step from version 949 to version 950.
-2025-10-10 08:22:38.12 spid9s      Database 'master' running the upgrade step from version 950 to version 951.
-2025-10-10 08:22:38.17 spid9s      Database 'master' running the upgrade step from version 951 to version 952.
-2025-10-10 08:22:38.19 spid9s      Database 'master' running the upgrade step from version 952 to version 953.
-2025-10-10 08:22:38.22 spid9s      Database 'master' running the upgrade step from version 953 to version 954.
-2025-10-10 08:22:38.24 spid9s      Database 'master' running the upgrade step from version 954 to version 955.
-2025-10-10 08:22:38.25 spid9s      Database 'master' running the upgrade step from version 955 to version 956.
-2025-10-10 08:22:38.31 Server      Common language runtime (CLR) functionality initialized.
-2025-10-10 08:22:38.33 spid9s      Database 'master' running the upgrade step from version 956 to version 957.
-2025-10-10 08:22:38.42 Server      External governance manager initialized
-2025-10-10 08:22:38.52 spid9s      SQL Server Audit is starting the audits. This is an informational message. No user action is required.
-2025-10-10 08:22:38.53 spid18s     Attribute synchronization initialized
-2025-10-10 08:22:38.53 spid18s     Attribute synchronization manager initialized
-2025-10-10 08:22:38.53 spid9s      SQL Server Audit has started the audits. This is an informational message. No user action is required.
-2025-10-10 08:22:38.58 spid9s      SQL Trace ID 1 was started by login "sa".
-2025-10-10 08:22:38.60 spid9s      Server name is 'bc48a914c749'. This is an informational message only. No user action is required.
-2025-10-10 08:22:38.66 spid31s     Password policy update was successful.
-2025-10-10 08:22:38.67 spid13s     [32767]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
-2025-10-10 08:22:38.68 spid9s      [4]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
-2025-10-10 08:22:38.69 spid34s     Always On: The availability replica manager is starting. This is an informational message only. No user action is required.
-2025-10-10 08:22:38.69 spid13s     Starting up database 'mssqlsystemresource'.
-2025-10-10 08:22:38.70 spid34s     Always On: The availability replica manager is waiting for the instance of SQL Server to allow client connections. This is an informational message only. No user action is required.
-2025-10-10 08:22:38.71 spid9s      Starting up database 'msdb'.
-2025-10-10 08:22:38.75 spid13s     The resource database build version is 16.00.4215. This is an informational message only. No user action is required.
-2025-10-10 08:22:38.85 spid13s     [3]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
-2025-10-10 08:22:38.87 spid13s     Starting up database 'model'.
-2025-10-10 08:22:39.21 spid9s      Converting database 'msdb' from version 927 to the current version 957.
-2025-10-10 08:22:39.21 spid9s      Database 'msdb' running the upgrade step from version 927 to version 928.
-2025-10-10 08:22:39.29 spid9s      Database 'msdb' running the upgrade step from version 928 to version 929.
-2025-10-10 08:22:39.29 spid13s     Converting database 'model' from version 927 to the current version 957.
-2025-10-10 08:22:39.29 spid13s     Database 'model' running the upgrade step from version 927 to version 928.
-2025-10-10 08:22:39.33 spid13s     Database 'model' running the upgrade step from version 928 to version 929.
-2025-10-10 08:22:39.42 spid9s      Database 'msdb' running the upgrade step from version 929 to version 930.
-2025-10-10 08:22:39.43 spid13s     Database 'model' running the upgrade step from version 929 to version 930.
-2025-10-10 08:22:39.46 spid9s      Database 'msdb' running the upgrade step from version 930 to version 931.
-2025-10-10 08:22:39.47 spid13s     Database 'model' running the upgrade step from version 930 to version 931.
-2025-10-10 08:22:39.49 spid9s      Database 'msdb' running the upgrade step from version 931 to version 932.
-2025-10-10 08:22:39.49 spid13s     Database 'model' running the upgrade step from version 931 to version 932.
-2025-10-10 08:22:39.50 spid13s     Database 'model' running the upgrade step from version 932 to version 933.
-2025-10-10 08:22:39.52 spid9s      Database 'msdb' running the upgrade step from version 932 to version 933.
-2025-10-10 08:22:39.54 spid13s     Database 'model' running the upgrade step from version 933 to version 934.
-2025-10-10 08:22:39.58 spid9s      Database 'msdb' running the upgrade step from version 933 to version 934.
-2025-10-10 08:22:39.58 spid13s     Database 'model' running the upgrade step from version 934 to version 935.
-2025-10-10 08:22:39.60 spid9s      Database 'msdb' running the upgrade step from version 934 to version 935.
-2025-10-10 08:22:39.61 spid13s     Database 'model' running the upgrade step from version 935 to version 936.
-2025-10-10 08:22:39.62 spid9s      Database 'msdb' running the upgrade step from version 935 to version 936.
-2025-10-10 08:22:39.63 spid13s     Database 'model' running the upgrade step from version 936 to version 937.
-2025-10-10 08:22:39.65 spid9s      Database 'msdb' running the upgrade step from version 936 to version 937.
-2025-10-10 08:22:39.67 spid13s     Database 'model' running the upgrade step from version 937 to version 938.
-2025-10-10 08:22:39.68 spid9s      Database 'msdb' running the upgrade step from version 937 to version 938.
-2025-10-10 08:22:39.71 spid13s     Database 'model' running the upgrade step from version 938 to version 939.
-2025-10-10 08:22:39.71 spid9s      Database 'msdb' running the upgrade step from version 938 to version 939.
-2025-10-10 08:22:39.73 spid13s     Database 'model' running the upgrade step from version 939 to version 940.
-2025-10-10 08:22:39.74 spid9s      Database 'msdb' running the upgrade step from version 939 to version 940.
-2025-10-10 08:22:39.76 spid13s     Database 'model' running the upgrade step from version 940 to version 941.
-2025-10-10 08:22:39.77 spid9s      Database 'msdb' running the upgrade step from version 940 to version 941.
-2025-10-10 08:22:39.78 spid13s     Database 'model' running the upgrade step from version 941 to version 942.
-2025-10-10 08:22:39.79 spid9s      Database 'msdb' running the upgrade step from version 941 to version 942.
-2025-10-10 08:22:39.81 spid9s      Database 'msdb' running the upgrade step from version 942 to version 943.
-2025-10-10 08:22:39.82 spid13s     Database 'model' running the upgrade step from version 942 to version 943.
-2025-10-10 08:22:39.98 spid13s     Database 'model' running the upgrade step from version 943 to version 944.
-2025-10-10 08:22:40.00 spid9s      Database 'msdb' running the upgrade step from version 943 to version 944.
-2025-10-10 08:22:40.01 spid13s     Database 'model' running the upgrade step from version 944 to version 945.
-2025-10-10 08:22:40.03 spid9s      Database 'msdb' running the upgrade step from version 944 to version 945.
-2025-10-10 08:22:40.07 spid13s     Database 'model' running the upgrade step from version 945 to version 946.
-2025-10-10 08:22:40.10 spid13s     Database 'model' running the upgrade step from version 946 to version 947.
-2025-10-10 08:22:40.12 spid9s      Database 'msdb' running the upgrade step from version 945 to version 946.
-2025-10-10 08:22:40.14 spid13s     Database 'model' running the upgrade step from version 947 to version 948.
-2025-10-10 08:22:40.16 spid9s      Database 'msdb' running the upgrade step from version 946 to version 947.
-2025-10-10 08:22:40.16 spid13s     Database 'model' running the upgrade step from version 948 to version 949.
-2025-10-10 08:22:40.21 spid9s      Database 'msdb' running the upgrade step from version 947 to version 948.
-2025-10-10 08:22:40.23 spid13s     Database 'model' running the upgrade step from version 949 to version 950.
-2025-10-10 08:22:40.24 spid9s      Database 'msdb' running the upgrade step from version 948 to version 949.
-2025-10-10 08:22:40.26 spid13s     Database 'model' running the upgrade step from version 950 to version 951.
-2025-10-10 08:22:40.30 spid9s      Database 'msdb' running the upgrade step from version 949 to version 950.
-2025-10-10 08:22:40.32 spid13s     Database 'model' running the upgrade step from version 951 to version 952.
-2025-10-10 08:22:40.33 spid9s      Database 'msdb' running the upgrade step from version 950 to version 951.
-2025-10-10 08:22:40.36 spid13s     Database 'model' running the upgrade step from version 952 to version 953.
-2025-10-10 08:22:40.41 spid13s     Database 'model' running the upgrade step from version 953 to version 954.
-2025-10-10 08:22:40.46 spid9s      Database 'msdb' running the upgrade step from version 951 to version 952.
-2025-10-10 08:22:40.47 spid13s     Database 'model' running the upgrade step from version 954 to version 955.
-2025-10-10 08:22:40.49 spid9s      Database 'msdb' running the upgrade step from version 952 to version 953.
-2025-10-10 08:22:40.52 spid13s     Database 'model' running the upgrade step from version 955 to version 956.
-2025-10-10 08:22:40.59 spid13s     Database 'model' running the upgrade step from version 956 to version 957.
-2025-10-10 08:22:40.60 spid9s      Database 'msdb' running the upgrade step from version 953 to version 954.
-2025-10-10 08:22:40.62 spid9s      Database 'msdb' running the upgrade step from version 954 to version 955.
-2025-10-10 08:22:40.66 spid9s      Database 'msdb' running the upgrade step from version 955 to version 956.
-2025-10-10 08:22:40.73 spid13s     Clearing tempdb database.
-2025-10-10 08:22:40.79 spid9s      Database 'msdb' running the upgrade step from version 956 to version 957.
-2025-10-10 08:22:40.82 spid31s     A self-generated certificate was successfully loaded for encryption.
-2025-10-10 08:22:40.84 spid31s     Server is listening on [ 'any' <ipv6> 1433] accept sockets 1.
-2025-10-10 08:22:40.85 spid31s     Server is listening on [ 'any' <ipv4> 1433] accept sockets 1.
-2025-10-10 08:22:40.86 spid31s     Dedicated administrator connection support was not started because it is disabled on this edition of SQL Server. If you want to use a dedicated administrator connection, restart SQL Server using the trace flag 7806. This is an informational message only. No user action is required.
-2025-10-10 08:22:40.91 spid31s     Server is listening on [ ::1 <ipv6> 1431] accept sockets 1.
-2025-10-10 08:22:40.93 spid31s     Server is listening on [ 127.0.0.1 <ipv4> 1431] accept sockets 1.
-2025-10-10 08:22:40.99 spid31s     SQL Server is now ready for client connections. This is an informational message; no user action is required.
-2025-10-10 08:22:41.28 spid13s     [2]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
-2025-10-10 08:22:41.28 spid13s     Starting up database 'tempdb'.
-2025-10-10 08:22:41.41 spid34s     The Service Broker endpoint is in disabled or stopped state.
-2025-10-10 08:22:41.41 spid34s     The Database Mirroring endpoint is in disabled or stopped state.
-2025-10-10 08:22:41.43 spid34s     Service Broker manager has started.
-2025-10-10 08:22:41.43 spid9s      Recovery is complete. This is an informational message only. No user action is required.
-2025-10-10 08:22:41.53 spid19s     The default language (LCID 0) has been set for engine and full-text services.
-2025-10-10 08:29:00.49 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:00.49 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:05.53 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:05.53 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:10.54 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:10.54 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:15.56 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:15.56 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:20.58 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:20.58 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:25.60 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:25.60 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:28.76 spid51      Attempting to load library 'xplog70.dll' into memory. This is an informational message only. No user action is required.
-2025-10-10 08:29:28.80 spid51      Using 'xplog70.dll' version '2022.160.4215' to execute extended stored procedure 'xp_msver'. This is an informational message only; no user action is required.
-2025-10-10 08:29:30.61 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:30.61 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:34.77 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:34.77 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:39.78 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:39.78 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:44.81 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:44.81 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:49.82 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:49.82 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:54.84 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:54.84 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:29:59.85 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:29:59.85 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:30:04.87 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:30:04.87 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:30:09.89 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:30:09.89 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:30:14.91 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:30:14.91 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:30:19.94 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:30:19.94 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:31:21.59 spid51      Using 'dbghelp.dll' version '4.0.5'
-2025-10-10 08:32:05.03 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:05.03 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:10.05 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:10.05 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:15.07 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:15.07 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:20.10 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:20.10 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:25.13 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:25.13 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:30.15 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:30.15 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:35.18 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:35.18 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:40.22 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:40.22 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:45.25 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:45.25 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:32:50.28 Logon       Error: 18456, Severity: 14, State: 38.
-2025-10-10 08:32:50.28 Logon       Login failed for user 'sa'. Reason: Failed to open the explicitly specified database 'criptosdb'. [CLIENT: 172.20.0.3]
-2025-10-10 08:33:33.16 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:33:33.16 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:33:38.18 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:33:38.18 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:33:43.19 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:33:43.19 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:33:48.21 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:33:48.21 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:33:53.23 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:33:53.23 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:33:58.24 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:33:58.24 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:34:03.26 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:34:03.26 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:34:08.27 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:34:08.27 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:34:13.29 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:34:13.29 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:34:18.31 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:34:18.31 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:03.39 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:03.39 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:08.40 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:08.40 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:13.42 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:13.42 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:18.44 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:18.44 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:23.45 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:23.45 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:28.47 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:28.47 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:33.50 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:33.50 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:38.52 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:38.52 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:43.54 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:43.54 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
-2025-10-10 08:36:48.56 Logon       Error: 18456, Severity: 14, State: 5.
-2025-10-10 08:36:48.56 Logon       Login failed for user 'haimar'. Reason: Could not find a login matching the name provided. [CLIENT: 172.20.0.3]
+2025-10-13 09:34:48.86 Server      SQL Server detected 1 sockets with 1 cores per socket and 1 logical processors per socket, 1 total logical processors; using 1 logical processors based on SQL Server licensing. This is an informational message; no user action is required.
+2025-10-13 09:34:48.87 Server      SQL Server is starting at normal priority base (=7). This is an informational message only. No user action is required.
+2025-10-13 09:34:48.87 Server      Detected 5912 MB of RAM, 5511 MB of available memory, 5511 MB of available page file. This is an informational message; no user action is required.
+2025-10-13 09:34:48.87 Server      Using conventional memory in the memory manager.
+2025-10-13 09:34:48.87 Server      Detected pause instruction latency: 21 cycles.
+2025-10-13 09:34:48.87 Server      SQL Server detected the following NUMA node configuration (NUMA Node number 0, Processor Group number 0, CPU Mask 0x0000000000000001).
+2025-10-13 09:34:48.88 Server      Page exclusion bitmap is enabled.
+2025-10-13 09:34:48.91 Server      Buffer pool extension is not supported on Linux platform.
+2025-10-13 09:34:48.93 Server      Buffer Pool: Allocating 8388608 bytes for 873268 hashPages.
+2025-10-13 09:34:49.18 Server      Buffer pool extension is already disabled. No action is necessary.
+2025-10-13 09:34:50.06 Server      Installing Client TLS certificates to the store.
+2025-10-13 09:34:50.09 Server      CPU vectorization level(s) detected:  SSE SSE2 SSE3 SSSE3 SSE41 SSE42 AVX AVX2 POPCNT BMI1 BMI2
+2025-10-13 09:34:50.18 Server      Successfully initialized the TLS configuration. Allowed TLS protocol versions are ['1.0 1.1 1.2']. Allowed TLS ciphers are ['ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:!DHE-RSA-AES256-GCM-SHA384:!DHE-RSA-AES128-GCM-SHA256:!DHE-RSA-AES256-SHA:!DHE-RSA-AES128-SHA'].
+2025-10-13 09:34:50.22 Server      Query Store settings initialized with enabled = 1, 
+2025-10-13 09:34:50.24 Server      The maximum number of dedicated administrator connections for this instance is '1'
+2025-10-13 09:34:50.25 Server      Node configuration: node 0: CPU mask: 0x0000000000000001:0 Active CPU mask: 0x0000000000000001:0. This message provides a description of the NUMA configuration for this computer. This is an informational message only. No user action is required.
+2025-10-13 09:34:50.29 Server      Using dynamic lock allocation.  Initial allocation of 2500 Lock blocks and 5000 Lock Owner blocks per node.  This is an informational message only.  No user action is required.
+2025-10-13 09:34:50.33 Server      In-Memory OLTP initialized on lowend machine.
+2025-10-13 09:34:50.43 Server      CLR version v4.0.30319 loaded.
+2025-10-13 09:34:50.49 Server      [INFO] Created Extended Events session 'hkenginexesession'
+2025-10-13 09:34:50.50 Server      Database Instant File Initialization: enabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.
+2025-10-13 09:34:50.63 Server      Total Log Writer threads: 1. This is an informational message; no user action is required.
+2025-10-13 09:34:50.66 Server      clflushopt is selected for pmem flush operation.
+2025-10-13 09:34:50.68 Server      Software Usage Metrics is disabled.
+2025-10-13 09:34:50.79 spid9s      [1]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
+2025-10-13 09:34:50.79 spid9s      Starting up database 'master'.
+2025-10-13 09:34:51.29 spid9s      30 transactions rolled forward in database 'master' (1:0). This is an informational message only. No user action is required.
+2025-10-13 09:34:51.35 spid9s      0 transactions rolled back in database 'master' (1:0). This is an informational message only. No user action is required.
+2025-10-13 09:34:51.37 spid9s      Recovery is writing a checkpoint in database 'master' (1). This is an informational message only. No user action is required.
+2025-10-13 09:34:52.01 spid9s      SQL Server Audit is starting the audits. This is an informational message. No user action is required.
+2025-10-13 09:34:52.03 spid9s      SQL Server Audit has started the audits. This is an informational message. No user action is required.
+2025-10-13 09:34:52.58 Server      Common language runtime (CLR) functionality initialized.
+2025-10-13 09:34:52.59 spid9s      SQL Trace ID 1 was started by login "sa".
+2025-10-13 09:34:52.61 spid9s      Server name is 'bc48a914c749'. This is an informational message only. No user action is required.
+2025-10-13 09:34:53.00 Server      External governance manager initialized
+2025-10-13 09:34:53.04 spid13s     [32767]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
+2025-10-13 09:34:53.05 spid30s     Always On: The availability replica manager is starting. This is an informational message only. No user action is required.
+2025-10-13 09:34:53.08 spid31s     [4]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
+2025-10-13 09:34:53.09 spid32s     [5]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
+2025-10-13 09:34:53.10 spid13s     Starting up database 'mssqlsystemresource'.
+2025-10-13 09:34:53.11 spid30s     Always On: The availability replica manager is waiting for the instance of SQL Server to allow client connections. This is an informational message only. No user action is required.
+2025-10-13 09:34:53.11 spid31s     Starting up database 'msdb'.
+2025-10-13 09:34:53.12 spid32s     Starting up database 'criptosdb'.
+2025-10-13 09:34:53.12 spid32s     RemoveStaleDbEntries: Cleanup of stale DB entries called for database ID: [5]
+2025-10-13 09:34:53.12 spid32s     RemoveStaleDbEntries: Cleanup of stale DB entries skipped because master db is not memory optimized. DbId: 5.
+2025-10-13 09:34:53.17 spid13s     The resource database build version is 16.00.4215. This is an informational message only. No user action is required.
+2025-10-13 09:34:53.42 spid13s     [3]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
+2025-10-13 09:34:53.44 spid13s     Starting up database 'model'.
+2025-10-13 09:34:53.77 spid32s     Parallel redo is started for database 'criptosdb' with worker pool size [1].
+2025-10-13 09:34:54.15 spid31s     Recovery is writing a checkpoint in database 'msdb' (4). This is an informational message only. No user action is required.
+2025-10-13 09:34:54.48 spid32s     950 transactions rolled forward in database 'criptosdb' (5:0). This is an informational message only. No user action is required.
+2025-10-13 09:34:54.54 spid13s     Clearing tempdb database.
+2025-10-13 09:34:54.57 spid32s     0 transactions rolled back in database 'criptosdb' (5:0). This is an informational message only. No user action is required.
+2025-10-13 09:34:54.58 spid32s     Recovery is writing a checkpoint in database 'criptosdb' (5). This is an informational message only. No user action is required.
+2025-10-13 09:34:54.65 spid32s     Parallel redo is shutdown for database 'criptosdb' with worker pool size [1].
+2025-10-13 09:34:55.29 spid13s     [2]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
+2025-10-13 09:34:55.30 spid13s     Starting up database 'tempdb'.
+2025-10-13 09:34:55.52 spid26s     A self-generated certificate was successfully loaded for encryption.
+2025-10-13 09:34:55.52 spid26s     Server is listening on [ 'any' <ipv6> 1433] accept sockets 1.
+2025-10-13 09:34:55.53 spid26s     Server is listening on [ 'any' <ipv4> 1433] accept sockets 1.
+2025-10-13 09:34:55.54 spid26s     Dedicated administrator connection support was not started because it is disabled on this edition of SQL Server. If you want to use a dedicated administrator connection, restart SQL Server using the trace flag 7806. This is an informational message only. No user action is required.
+2025-10-13 09:34:55.56 spid26s     Server is listening on [ ::1 <ipv6> 1431] accept sockets 1.
+2025-10-13 09:34:55.56 spid26s     Server is listening on [ 127.0.0.1 <ipv4> 1431] accept sockets 1.
+2025-10-13 09:34:55.57 spid26s     SQL Server is now ready for client connections. This is an informational message; no user action is required.
+2025-10-13 09:34:55.59 spid27s     The Service Broker endpoint is in disabled or stopped state.
+2025-10-13 09:34:55.59 spid27s     The Database Mirroring endpoint is in disabled or stopped state.
+2025-10-13 09:34:55.62 spid27s     Service Broker manager has started.
+2025-10-13 09:34:55.62 spid9s      Recovery is complete. This is an informational message only. No user action is required.
+2025-10-13 09:34:56.52 spid52      [5]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0
+2025-10-13 09:34:56.52 spid52      Starting up database 'criptosdb'.
+2025-10-13 09:34:56.52 spid52      RemoveStaleDbEntries: Cleanup of stale DB entries called for database ID: [5]
+2025-10-13 09:34:56.53 spid52      RemoveStaleDbEntries: Cleanup of stale DB entries skipped because master db is not memory optimized. DbId: 5.
+2025-10-13 09:34:56.66 spid52      Parallel redo is started for database 'criptosdb' with worker pool size [1].
+2025-10-13 09:34:56.67 spid52      Parallel redo is shutdown for database 'criptosdb' with worker pool size [1].
+2025-10-13 09:34:57.02 spid10s     Attribute synchronization initialized
+2025-10-13 09:34:57.02 spid10s     Attribute synchronization manager initialized
+2025-10-13 09:41:42.96 spid54      Attempting to load library 'xplog70.dll' into memory. This is an informational message only. No user action is required.
+2025-10-13 09:41:42.99 spid54      Using 'xplog70.dll' version '2022.160.4215' to execute extended stored procedure 'xp_msver'. This is an informational message only; no user action is required.
+2025-10-13 09:43:51.29 spid54      Using 'dbghelp.dll' version '4.0.5'
+2025-10-13 10:34:04.35 spid17s     [DevOpsSnapshotTelemetryTask] Evaluating the background task.
