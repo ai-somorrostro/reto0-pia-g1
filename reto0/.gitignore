@@ -20,3 +20,9 @@ docker-sql/sql_data/
 *.log
 *.tmp
 *.swp
+
+# Ignorar datos de Docker SQL Server
+docker-sql/sql_data/
+docker-csv/data/
+reto0/.venv/
+

@@ -12,6 +12,9 @@ En esta rama estan todos los archivos necesarios para poder ejecutar el contened
 ## Rama "docker-sql"
 En esta rama estan todos los archivos necesarios para poder ejecutar el contenedor que inicializara el sqlserver
 
+## Rama "docker-sql"
+En esta rama estan todos los archivos necesarios para poder ejecutar el contenedor que inicializara el sqlserver
+
 ## Rama "githubpage" 
 En esta rama estan todos los archivos necesarios para modificar y ejecutar nuestra Githubpage.
 
