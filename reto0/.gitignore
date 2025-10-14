@@ -1,0 +1,28 @@
+# Entorno virtual
+venv/
+env/
+.venv/
+.env/
+
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Configuración de IDEs
+.vscode/
+.idea/
+
+# Datos de SQL
+docker-sql/sql_data/
+
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+
+# Ignorar datos de Docker SQL Server
+docker-sql/sql_data/
+docker-csv/data/
+reto0/.venv/
+
