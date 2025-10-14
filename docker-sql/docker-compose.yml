@@ -9,6 +9,8 @@ services:
       - "1433:1433"
     volumes:
       - ./sql_data:/var/opt/mssql  # persistencia de datos
+    user: "10001:0"
+    entrypoint: ["/bin/bash", "-c", "chown -R 10001:0 /var/opt/mssql && chmod -R 770 /var/opt/mssql && /opt/mssql/bin/sqlservr"]
 
   criptos:
     build: .
