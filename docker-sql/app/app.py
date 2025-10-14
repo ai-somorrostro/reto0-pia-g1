@@ -140,6 +140,9 @@ if __name__ == "__main__":
 
     while True:
         monedas = obtener_criptos()
+        print("⏳ Obteniendo datos de criptomonedas...")
         if monedas:
             guardar_datos(conn, monedas)
-        time.sleep(100)
+            print("✅ Datos guardados exitosamente.")
+            print("⏳ Esperando 3 minutos para la siguiente actualización...")
+        time.sleep(180)
