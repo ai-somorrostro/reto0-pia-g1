@@ -4,7 +4,6 @@ WORKDIR /app
 COPY app/ /app/
 COPY requirements.txt /app/
 
-# Instalar dependencias del sistema
 RUN apt-get update && apt-get install -y \
     curl gnupg2 apt-transport-https unixodbc unixodbc-dev gcc g++ ca-certificates lsb-release && \
     curl -sSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > /usr/share/keyrings/microsoft.gpg && \
@@ -13,4 +12,4 @@ RUN apt-get update && apt-get install -y \
     pip install --no-cache-dir -r requirements.txt && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-CMD ["sh", "-c", "while true; do python app.py; sleep 180; done"]
+CMD ["python", "app.py"]
