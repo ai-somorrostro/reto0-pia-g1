@@ -13,16 +13,12 @@ __pycache__/
 .vscode/
 .idea/
 
-# Datos de SQL
-docker-sql/sql_data/
 
 # Archivos temporales
 *.log
 *.tmp
 *.swp
 
-# Ignorar datos de Docker SQL Server
-docker-sql/sql_data/
-docker-csv/data/
-reto0/.venv/
+# Ignorar el directorio de compilación de MkDocs
+**/site/
 
