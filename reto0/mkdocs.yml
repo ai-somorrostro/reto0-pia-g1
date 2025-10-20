@@ -8,10 +8,10 @@ theme:
 
 
 nav:
-  - MIA: MIA.md
-  - BDA: BDA.md
-  - PIA: PIA.md
-  - SAA: SAA.md
-  - SBD: SBD.md
+  - MIA: modelos-inteligencia-artificial.md
+  - BDA: big-data-aplicado.md
+  - PIA: programas-inteligencia-artificial.md
+  - SAA: sistemas-aprendizaje-automatico.md
+  - SBD: sistemas-big-data.md
 
 repo_url: https://github.com/haimar.alvarez/haimar.alvarez.github.io
