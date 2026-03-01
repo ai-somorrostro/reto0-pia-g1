@@ -1,5 +1,5 @@
 version: '3.8'
-
+ 
 services:
   influxdb:
     image: influxdb:2.7
@@ -24,7 +24,7 @@ services:
       interval: 30s
       timeout: 10s
       retries: 3
-  
+ 
   nodered:
     build:
       context: .
@@ -42,10 +42,11 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-        
+       
   python-app:
     build: .
     container_name: python_app
+    restart: unless-stopped
     depends_on:
         influxdb:
           condition: service_healthy
@@ -56,14 +57,14 @@ services:
       - INFLUX_BUCKET_PANDAS=${INFLUX_BUCKET_PANDAS}
     networks:
       - iot-net
-    
+   
   grafana:
     build:
       context: .
       dockerfile: grafana/Dockerfile
     container_name: grafana_server
     ports:
-      - "3000:3000" 
+      - "3000:3000"
     environment:
       - INFLUXDB_TOKEN=${INFLUX_TOKEN}
       - INFLUX_URL=${INFLUX_URL}
@@ -82,13 +83,13 @@ services:
     depends_on:
       influxdb:
         condition: service_healthy
-
+ 
 volumes:
   influxdb-data:
   influxdb-config:
   nodered-data:
   grafana-data:
-
+ 
 networks:
   iot-net:
     driver: bridge
