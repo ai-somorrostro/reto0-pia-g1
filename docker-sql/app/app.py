@@ -5,20 +5,26 @@ import json
 from datetime import datetime
 import time
 import socket
-
+ 
 import os
 import subprocess
-
+ 
 # -----------------------------
 # Funciones auxiliares
 # -----------------------------
-
+ 
+HTTP_TIMEOUT = 10  # segundos
+ 
 def obtener_criptos():
     url = "https://api.coinlore.net/api/tickers/"
-    with urllib.request.urlopen(url) as response:
-        data = json.loads(response.read())
-        return data.get("data", [])
-
+    try:
+        with urllib.request.urlopen(url, timeout=HTTP_TIMEOUT) as response:
+            data = json.loads(response.read())
+            return data.get("data", [])
+    except Exception as e:
+        print(f"⚠️ Error al obtener datos de la API (timeout={HTTP_TIMEOUT}s): {e}")
+        return None
+ 
 def esperar_sqlserver(host, port, timeout=60):
     start = time.time()
     while True:
@@ -31,18 +37,18 @@ def esperar_sqlserver(host, port, timeout=60):
                 raise TimeoutError("SQL Server no respondió a tiempo")
             print("⏳ SQL Server no listo, reintentando en 2s...")
             time.sleep(2)
-
+ 
 # -----------------------------
 # Conexión y creación DB
 # -----------------------------
-
+ 
 def conectar_db():
     server = os.getenv("DB_SERVER", "sqlserver")
     database = os.getenv("DB_NAME", "criptosdb")
     username = os.getenv("DB_USER", "sa")
     password = os.getenv("DB_PASSWORD", "TuPasswordSegura123")
     driver = "{ODBC Driver 18 for SQL Server}"
-
+ 
     # Conectarse a master con autocommit
     conn_master = None
     while True:
@@ -55,22 +61,22 @@ def conectar_db():
         except pyodbc.Error:
             print("⏳ Esperando a que SQL Server acepte conexiones...")
             time.sleep(2)
-
+ 
     cursor = conn_master.cursor()
     cursor.execute(f"IF DB_ID('{database}') IS NULL CREATE DATABASE {database};")
     cursor.close()
     conn_master.close()
-
+ 
     # Conectarse a la base creada
     conn = pyodbc.connect(
         f"DRIVER={driver};SERVER={server};DATABASE={database};UID={username};PWD={password};TrustServerCertificate=yes;"
     )
     return conn
-
+ 
 # -----------------------------
 # Crear tablas si no existen
 # -----------------------------
-
+ 
 def crear_tabla(conn):
     cursor = conn.cursor()
     cursor.execute("""
@@ -96,22 +102,22 @@ def crear_tabla(conn):
     """)
     conn.commit()
     cursor.close()
-
+ 
 # -----------------------------
 # Guardar datos
 # -----------------------------
-
+ 
 def guardar_datos(conn, monedas):
     cursor = conn.cursor()
     timestamp = datetime.now()
-
+ 
     for moneda in monedas:
         # Inserta en criptomonedas si no existe
         cursor.execute("""
             IF NOT EXISTS (SELECT 1 FROM criptomonedas WHERE id = ?)
             INSERT INTO criptomonedas (id, nombre, simbolo) VALUES (?, ?, ?)
         """, (moneda["id"], moneda["id"], moneda["name"], moneda["symbol"]))
-
+ 
         # Inserta precio
         cursor.execute("""
             INSERT INTO precios (crypto_id, rank, price_usd, percent_change_24h, percent_change_7d, price_btc, fecha)
@@ -125,27 +131,29 @@ def guardar_datos(conn, monedas):
             moneda["price_btc"],
             timestamp
         ))
-
+ 
     conn.commit()
     cursor.close()
     print(f"[{timestamp}] {len(monedas)} filas insertadas correctamente.")
-
+ 
 # -----------------------------
 # Programa principal
 # -----------------------------
-
+ 
 if __name__ == "__main__":
     print("⏳ Esperando que SQL Server esté listo...")
     esperar_sqlserver(os.getenv("DB_SERVER", "sqlserver"), 1433)
-
+ 
     conn = conectar_db()
     crear_tabla(conn)
-
+ 
     while True:
-        monedas = obtener_criptos()
         print("⏳ Obteniendo datos de criptomonedas...")
+        monedas = obtener_criptos()
         if monedas:
             guardar_datos(conn, monedas)
             print("✅ Datos guardados exitosamente.")
-            print("⏳ Esperando 3 minutos para la siguiente actualización...")
+        else:
+            print("⚠️ No se obtuvieron datos en este ciclo. Se reintentará en el siguiente.")
+        print("⏳ Esperando 3 minutos para la siguiente actualización...")
         time.sleep(180)
