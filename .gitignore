@@ -1,0 +1,57 @@
+# ========================
+# .gitignore - Proyecto reto0-pia-g1
+# ========================
+ 
+# ---- Variables de entorno y credenciales ----
+.env
+.env.*
+!.env.example
+ 
+# ---- SQL Server: datos binarios de base de datos ----
+*.mdf
+*.ldf
+sql_data/
+ 
+# ---- Logs ----
+*.log
+*.xel
+errorlog
+errorlog.*
+ 
+# ---- Python: bytecode y cachés ----
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+*.egg
+dist/
+build/
+*.whl
+ 
+# ---- Entornos virtuales ----
+venv/
+.venv/
+env/
+ 
+# ---- Node-RED: credenciales ----
+flows_cred.json
+ 
+# ---- Docker: volúmenes y datos persistentes ----
+docker-sql/sql_data/
+ 
+# ---- IDE / Editor ----
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+ 
+# ---- Secretos y claves ----
+secrets/
+*.key
+*.pem
+machine-key
