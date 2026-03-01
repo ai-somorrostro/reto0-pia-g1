@@ -1,0 +1,27 @@
+# Archivos de entorno con credenciales
+.env
+*.env
+!.env.example
+ 
+# Entorno virtual
+venv/
+env/
+.venv/
+.env/
+ 
+# Archivos de Python compilados
+__pycache__/
+*.py[cod]
+*$py.class
+ 
+# Configuración de IDEs
+.vscode/
+.idea/
+ 
+# Archivos temporales
+*.log
+*.tmp
+*.swp
+ 
+# Ignorar el directorio de compilación de MkDocs
+**/site/
